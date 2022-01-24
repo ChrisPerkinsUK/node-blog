@@ -11,23 +11,30 @@ services:
       # see https://ghost.org/docs/config/#configuration-options
       database__client: mysql
       database__connection__host: db
-      database__connection__user: root
-      database__connection__password: example
-      database__connection__database: ghost
+      database__connection__user: /run/secrets/mysql-user-password
+      database__connection__password: /run/secrets/mysql-db-password
+      database__connection__database: /run/secrets/mysql-db-name
       # this url value is just an example, and is likely wrong for your environment!
       url: http://localhost:8080
       # contrary to the default mentioned in the linked documentation, this image defaults to NODE_ENV=production (so development mode needs to be explicitly specified if desired)
       #NODE_ENV: development
+    secrets:
+      - mysql-root-password
+      - mysql-user-password
+      - mysql-user
+      - mysql-db-name
 
   db:
     image: mysql:5.7
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: example
+      MYSQL_ROOT_PASSWORD: /run/secrets/mysql-root-password
+      secrets:
+      - mysql-root-password
 
   secrets:
     mysql-root-password:
-      file: ./mysql-db-root-password
+      file: ./mysql-root-password
       name: 0.0.1
     mysql-user-password:
       file: ./mysql-db-password
