@@ -19,7 +19,6 @@ services:
       # contrary to the default mentioned in the linked documentation, this image defaults to NODE_ENV=production (so development mode needs to be explicitly specified if desired)
       #NODE_ENV: development
     secrets:
-      - mysql-root-password
       - mysql-user-password
       - mysql-user
       - mysql-db-name
