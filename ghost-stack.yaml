@@ -18,6 +18,10 @@ services:
       url: http://localhost:8080
       # contrary to the default mentioned in the linked documentation, this image defaults to NODE_ENV=production (so development mode needs to be explicitly specified if desired)
       #NODE_ENV: development
+    volumes:
+      - type: volume
+        source: ghost-blog-content
+        target: /var/lib/ghost/content
     secrets:
       - mysql-user-password
       - mysql-user
@@ -32,6 +36,10 @@ services:
       MYSQL_DATABASE: /run/secrets/mysql-db-name
       MYSQL_USER: /run/secrets/mysql-user
       MYSQL_PASSWORD: /run/secrets/mysql-user-password
+    volumes:
+      - type: volume
+        source: mysql-config
+        target: /etc/mysql/conf.d
     secrets:
       - mysql-root-password
       - mysql-user-password
@@ -51,4 +59,8 @@ secrets:
   mysql-db-name:
     file: ./mysql-db-name
     name: mysql-db-name-0.0.1
+
+volumes:
+  ghost-blog-content:
+  mysql-config:
     
