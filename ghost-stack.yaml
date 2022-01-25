@@ -28,20 +28,20 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: /run/secrets/mysql-root-password
-      secrets:
+    secrets:
       - mysql-root-password
 
   secrets:
     mysql-root-password:
       file: ./mysql-root-password
-      name: 0.0.1
+      name: mysql-root-password-0.0.1
     mysql-user-password:
       file: ./mysql-db-password
-      name: 0.0.1
+      name: mysql-user-password-0.0.1
     mysql-user:
       file: ./mysql-db-user
-      name: 0.0.1
+      name: mysql-user-0.0.1
     mysql-db-name:
       file: ./mysql-db-name
-      name: 0.0.1
+      name: mysql-db-name-0.0.1
     
