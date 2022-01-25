@@ -27,6 +27,7 @@ services:
     image: mysql:5.7
     restart: always
     environment:
+      # DB Name, Useer and Password are required in addition to the root password for Ghost to connect
       MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql-root-password
       MYSQL_DATABASE: /run/secrets/mysql-db-name
       MYSQL_USER: /run/secrets/mysql-user
