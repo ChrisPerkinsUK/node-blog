@@ -12,7 +12,7 @@ services:
       database__client: mysql
       database__connection__host: db
       database__connection__user: /run/secrets/mysql-user
-      database__connection__password: /run/secrets/mysql-root-password
+      database__connection__password: /run/secrets/mysql-user-password
       database__connection__database: /run/secrets/mysql-db-name
       # this url value is just an example, and is likely wrong for your environment!
       url: http://localhost:8080
@@ -28,8 +28,14 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql-root-password
+      MYSQL_DATABASE: /run/secrets/mysql-db-name
+      MYSQL_USER: /run/secrets/mysql-user
+      MYSQL_PASSWORD: /run/secrets/mysql-user-password
     secrets:
       - mysql-root-password
+      - mysql-user-password
+      - mysql-user
+      - mysql-db-name
 
 secrets:
   mysql-root-password:
