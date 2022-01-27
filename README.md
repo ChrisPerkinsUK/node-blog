@@ -1,2 +1,2 @@
 # node-blog
-A Simple Blog in Node.js and Mongodb
+A professional blog using Ghost and mysql
