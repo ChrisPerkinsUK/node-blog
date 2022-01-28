@@ -14,7 +14,7 @@ services:
         source: ./data/ghost/content
         target: /var/lib/ghost/content
       - type: bind
-        source: ./config/ghost/ssl
+        source: ./config/ghost/letsencrypt
         target: /etc/letsencrypt
 
   db:
@@ -24,5 +24,5 @@ services:
     restart: ${MYSQL_RESTART_POLICY:-always}
     volumes:
       - type: bind
-        source: ./code/mysql/conf.d
+        source: ./config/mysql/conf.d
         target: /etc/mysql/conf.d
