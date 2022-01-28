@@ -13,6 +13,9 @@ services:
       - type: bind
         source: ./data/ghost/content
         target: /var/lib/ghost/content
+      - type: bind
+        source: ./config/ghost/ssl
+        target: /etc/letsencrypt
 
   db:
     env_file:
