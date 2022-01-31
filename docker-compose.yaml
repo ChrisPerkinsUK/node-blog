@@ -16,7 +16,6 @@ services:
       - type: bind
         source: ./config/ghost/letsencrypt
         target: /etc/letsencrypt
-        
 
   db:
     env_file:
@@ -27,3 +26,14 @@ services:
       - type: bind
         source: ./config/mysql/conf.d
         target: /etc/mysql/conf.d
+
+  web:
+    env_file:
+      - ./nginx_service.env
+    image: nginx
+    volumes:
+      - type: bind
+        source: ./config/nginx
+        target: /etc/nginx/templates
+    ports:
+    - "${NGINX_PORT}:80"
