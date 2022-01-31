@@ -104,4 +104,7 @@ dist
 .tern-port
 
 # Exclude ghost content directories
-./data/ghost/content
+data/ghost/content/
+
+# Exclude the ghost codebase
+code/ghost/*/

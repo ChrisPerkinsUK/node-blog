@@ -16,6 +16,7 @@ services:
       - type: bind
         source: ./config/ghost/letsencrypt
         target: /etc/letsencrypt
+        
 
   db:
     env_file:
