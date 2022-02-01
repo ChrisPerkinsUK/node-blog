@@ -34,6 +34,6 @@ services:
     volumes:
       - type: bind
         source: ./config/nginx
-        target: /etc/nginx/templates
+        target: /etc/nginx
     ports:
     - ${NGINX_HOST_PORT}:${NGINX_CONTAINER_PORT}
