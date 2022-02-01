@@ -19,7 +19,7 @@ services:
 
   db:
     env_file:
-      - ./mysql_service_envars.env
+      - ./mysql_service.env
     image: mysql:${MYSQL_VERSION}
     restart: ${MYSQL_RESTART_POLICY}
     volumes:
