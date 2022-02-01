@@ -4,7 +4,7 @@ services:
 
   ghost:
     env_file:
-      - ./ghost_service_envars.env
+      - ./ghost_service.env
     image: ghost:${GHOST_VERSION}
     restart: ${GHOST_RESTART_POLICY}
     ports:
