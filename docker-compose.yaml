@@ -6,6 +6,8 @@ services:
     env_file:
       - ./ghost_service.env
     image: ghost:${GHOST_VERSION}
+    container_name: ghost
+    hostname: ghost
     restart: ${GHOST_RESTART_POLICY}
     ports:
       - ${GHOST_HOST_PORT}:${GHOST_CONTAINER_PORT}
@@ -21,16 +23,20 @@ services:
     env_file:
       - ./mysql_service.env
     image: mysql:${MYSQL_VERSION}
+    container_name: mysql
+    hostname: mysql
     restart: ${MYSQL_RESTART_POLICY}
     volumes:
       - type: bind
         source: ./config/mysql/conf.d
         target: /etc/mysql/conf.d
 
-  web:
+  nginx:
     env_file:
       - ./nginx_service.env
     image: nginx
+    container_name: nginx
+    hostname: nginx
     volumes:
       - type: bind
         source: ./config/nginx

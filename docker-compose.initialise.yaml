@@ -25,7 +25,7 @@ services:
     env_file:
       - ./nginx_service.env
     image: nginx
-    volumes:
-      - ./config/my-nginx:/etc/nginx/
+    # volumes:
+    #   - ./config/nginx:/etc/nginx
     ports:
     - ${NGINX_HOST_PORT}:${NGINX_CONTAINER_PORT}
