@@ -6,8 +6,8 @@ services:
     env_file:
       - ./ghost_service.env
     image: ghost:${GHOST_VERSION}
-    container_name: ghost
-    hostname: ghost
+    container_name: casper
+    hostname: ghost-blog
     restart: ${GHOST_RESTART_POLICY}
     ports:
       - ${GHOST_HOST_PORT}:${GHOST_CONTAINER_PORT}
@@ -23,8 +23,8 @@ services:
     env_file:
       - ./mysql_service.env
     image: mysql:${MYSQL_VERSION}
-    container_name: mysql
-    hostname: mysql
+    container_name: mysql-ghost
+    hostname: mysql-ghost
     restart: ${MYSQL_RESTART_POLICY}
     volumes:
       - type: bind
@@ -35,8 +35,8 @@ services:
     env_file:
       - ./nginx_service.env
     image: nginx
-    container_name: nginx
-    hostname: nginx
+    container_name: nginx-front
+    hostname: nginx-reversal
     volumes:
       - type: bind
         source: ./config/nginx
