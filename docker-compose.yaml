@@ -30,16 +30,3 @@ services:
       - type: bind
         source: ./config/mysql/conf.d
         target: /etc/mysql/conf.d
-
-  nginx:
-    env_file:
-      - ./nginx_service.env
-    image: nginx
-    container_name: nginx-front
-    hostname: nginx-reversal
-    volumes:
-      - type: bind
-        source: ./config/nginx
-        target: /etc/nginx
-    ports:
-    - ${NGINX_HOST_PORT}:${NGINX_CONTAINER_PORT}
